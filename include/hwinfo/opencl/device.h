@@ -10,7 +10,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "../../../cmake-build-release/_deps/opencl-src/external/OpenCL-CLHPP/include/CL/opencl.hpp"
+#include "CL/opencl.hpp"
 
 namespace opencl_ {
 
