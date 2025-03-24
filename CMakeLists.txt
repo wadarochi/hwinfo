@@ -34,8 +34,8 @@ include(GNUInstallDirs)
 
 string(COMPARE EQUAL "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}" PROJECT_IS_TOP_LEVEL)
 
-option(HWINFO_SHARED "Shared build" ON)
-option(HWINFO_STATIC "Static build" OFF)
+option(HWINFO_SHARED "Shared build" OFF)
+option(HWINFO_STATIC "Static build" ON)
 
 
 option(BUILD_EXAMPLES "Build example program" ${PROJECT_IS_TOP_LEVEL})
