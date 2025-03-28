@@ -353,8 +353,7 @@ void showJsonInfo(HardwareDetectScope &scope, bool prettyPrint)
     systemInfo["gpu"] = gpuInfoArray;
   }
 
-  if (scope.detect_memory)
-  {
+  if (scope.detect_memory) {
     hwinfo::Memory memory;
     json memoryInfo;
     memoryInfo["total_mib"] = bytes_to_MiB(memory.total_Bytes());
@@ -371,18 +370,23 @@ void showJsonInfo(HardwareDetectScope &scope, bool prettyPrint)
       memoryModuleInfo["model"] = module.model;
       memoryModuleInfo["name"] = module.name;
       memoryModuleInfo["serial-number"] = module.serial_number;
-      memoryModuleInfo["frequency_mhz"] = module.frequency_Hz == -1 ? -1 : static_cast<double>(module.frequency_Hz) / 1e6;
+      memoryModuleInfo["frequency_mhz"] =
+          module.frequency_Hz == -1 ? -1 : static_cast<double>(module.frequency_Hz) / 1e6;
 
       memoryModulesArray.push_back(memoryModuleInfo);
     }
     systemInfo["memory_modules"] = memoryModulesArray;
+  }
 
+  if (scope.detect_main_board) {
     hwinfo::MainBoard main_board;
     json mainBoardInfo;
     mainBoardInfo["vendor"] = main_board.vendor();
     mainBoardInfo["name"] = main_board.name();
     mainBoardInfo["version"] = main_board.version();
     mainBoardInfo["serial-number"] = main_board.serialNumber();
+
+    systemInfo["main_board"] = mainBoardInfo;
   }
 
   if (scope.detect_battery)
