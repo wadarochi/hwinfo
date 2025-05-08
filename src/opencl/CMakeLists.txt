@@ -17,5 +17,11 @@ else()
 endif()
 
 add_library(opencl_device STATIC device.cpp)
-target_include_directories(opencl_device PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(opencl_device PRIVATE ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(opencl_device PUBLIC OpenCL::HeadersCpp OpenCL::OpenCL)
+
+install(TARGETS opencl_device
+        EXPORT lfreist-hwinfoTargets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
